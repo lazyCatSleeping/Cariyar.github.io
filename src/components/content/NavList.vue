@@ -1,8 +1,6 @@
 <template>
 	<ElMenu class="el-menu-vertical-demo" 
 		:default-active="defaultActive"
-		@open="handleOpen"
-		@close="handleClose"
 	>
 		<div v-for="el in menu" :key="el.id">
 			<ElMenuItem v-if="el.menu === undefined" :index="el.index">
@@ -43,12 +41,6 @@ export default {
 		const menu = reactive([]);
 		
 		// methods
-		const handleOpen = (key, keyPath) => {
-			console.log(key, keyPath);
-		};
-		const handleClose = (key, keyPath) => {
-			console.log(key, keyPath);
-		};
 
 		onMounted(() => {
 			let loc = history.state.current;
@@ -57,12 +49,11 @@ export default {
 				url: "/blogserve/nav" + loc,
 			}).then(
 				(res) => {
-					console.log(res.data);
 					let newMenu = reactive(res.data);
 					Object.assign(menu, newMenu);
 				},
 				(err) => {
-					console.log(err);
+					console.warn(err);
 				}
 			);
 
@@ -74,8 +65,6 @@ export default {
 			menu,
 
 			// methods
-			handleOpen,
-			handleClose
 		}
 	}
 };
