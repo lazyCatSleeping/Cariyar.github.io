@@ -8,7 +8,7 @@ export default {
 	},
 	mutations: {
 		// 改变侧边导航栏的显示
-		changeShowNavList(newFlag){
+		changeShowNavList(state, newFlag){
 			state.showNavList = newFlag || !state.showNavList;
 		}
 	},

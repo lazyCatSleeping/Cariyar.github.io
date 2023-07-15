@@ -10,23 +10,28 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
 import NavList from "./content/NavList";
+
 export default {
     name: "BlogContent",
     components: {
         NavList,
     },
-    data(){
+    setup() {
+        const store = useStore();
+        const showNavList = computed(() => store.state.nav.showNavList);
         return {
-            showNavList: true
-        }
-    }
+            showNavList,
+        };
+    },
 };
 </script>
 
 <style>
-.blog-content{
-	display: flex;
+.blog-content {
+    display: flex;
 }
 .blog-nav-list {
     width: 30%;
