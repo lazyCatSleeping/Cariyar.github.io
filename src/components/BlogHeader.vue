@@ -20,6 +20,7 @@
 import { onBeforeMount, onMounted, reactive, ref,  } from "vue";
 import { ElMenu } from "element-plus";
 import axios from "axios";
+import store from '@/store';
 export default {
     name: "BlogHeader",
     components: {
