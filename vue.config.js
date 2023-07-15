@@ -9,8 +9,10 @@ module.exports = defineConfig({
       })
     ]
   },
+  /* 添加请求代理规则 */
   devServer: {
     proxy: {
+      /* 博客相关的请求服务 */
       "/blogserve": {
         target: "http://localhost:8081",
         pathRewrite: {

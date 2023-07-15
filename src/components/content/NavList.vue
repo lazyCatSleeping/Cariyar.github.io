@@ -44,6 +44,8 @@ export default {
 
 		onMounted(() => {
 			let loc = history.state.current;
+			
+			if(loc )
 			axios({
 				method: "get",
 				url: "/blogserve/nav" + loc,

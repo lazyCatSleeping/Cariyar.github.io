@@ -20,13 +20,6 @@ export default {
         return {
             showNavList: true
         }
-    },
-    beforeRouteEnter(to, from, next){
-        // let noNavList = ["/home","/"];
-        console.log(to, from);
-
-        next();
-
     }
 };
 </script>
