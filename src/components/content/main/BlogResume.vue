@@ -1,15 +1,14 @@
 <template>
-<div>
-	简历
-</div>
+    <div class="resume">
+		resume
+	</div>
 </template>
 
 <script>
 export default {
-	name: "BlogResume"
-}
+    name: "BlogResume",
+};
 </script>
 
 <style>
-
 </style>

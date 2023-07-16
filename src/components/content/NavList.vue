@@ -55,7 +55,6 @@ export default {
                             // 将旧菜单清空
                             menu.length = 0;
                             // 将新数据的对象复制到menu中
-							console.log("promise报错？");
                             Object.assign(menu, newMenu);
                             if (res.data.length != 0) {
                                 defaultActive.value = res.data[0].menu
@@ -63,7 +62,7 @@ export default {
                                     : "1";
                             }
                         } catch (error) {
-							console.log(`promise: ${error}` )
+							console.log(`promise: ${error}` ) 
 						}
                     },
                     (err) => {

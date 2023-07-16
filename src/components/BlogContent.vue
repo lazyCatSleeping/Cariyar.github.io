@@ -37,6 +37,6 @@ export default {
     width: 30%;
 }
 .blog-router-view {
-    width: 63%;
+    width: 100vw;
 }
 </style>
