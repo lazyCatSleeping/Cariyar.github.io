@@ -45,8 +45,8 @@ export default {
 
         // 生命周期钩子
         onBeforeMount(() => {
-            let matchRoute = () => {
-                axios({
+            let matchRoute = async () => {
+                await axios({
                     method: "get",
                     url: "/blogserve/nav/header",
                 }).then(

@@ -43,11 +43,12 @@ export default {
 
         // methods
         // 获取侧边导航栏的请求
-        let getNavList = function () {
+        let getNavList = async () => {
+            console.log(route);
             if (route.path)
-                axios({
+                await axios({
                     method: "get",
-                    url: "/blogserve/nav" + route.path,
+                    url: "/blogserve/nav/sideNav" + route.path,
                 }).then(
                     (res) => {
                         try {
@@ -56,6 +57,7 @@ export default {
                             menu.length = 0;
                             // 将新数据的对象复制到menu中
                             Object.assign(menu, newMenu);
+                            // 初始化默认选中
                             if (res.data.length != 0) {
                                 defaultActive.value = res.data[0].menu
                                     ? "1-1"
