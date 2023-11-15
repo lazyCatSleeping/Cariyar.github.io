@@ -37,7 +37,6 @@ export default {
                 url: "/blogserve/resume/response/" + props.companyId,
             }).then(
                 (res) => {
-                    console.log(res);
                     companyData.value = res.data;
                 },
                 (err) => {
