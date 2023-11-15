@@ -1,8 +1,9 @@
 <template>
+    <!-- 该组件为个人教育经历 -->
     <resume-title :resumeTitle="title"></resume-title>
     <div>
         <ul v-for="(edu, index) in eduArr" :key="index" :id="i">
-            <li>{{ time }}</li>
+            <li>{{ edu.startTime }} ~ {{ edu.endTime }}</li>
             <li>{{ edu.uni }}</li>
             <li>{{ edu.professional }}</li>
             <!-- <li>{{ edu.qualify }}</li> -->
@@ -24,10 +25,14 @@ export default {
         ResumeTitle,
     },
     setup() {
+        /* 数据初始化 */
+        // 标题
         let title = ref(),
-            time = ref(),
+        // 存放数据
             eduArr = reactive([]);
 
+        /* 自定义函数 */
+        // 获取教育经历
         let getEducationInfo = () => {
             axios({
                 method: "get",
@@ -35,8 +40,7 @@ export default {
             }).then(
                 (res) => {
                     let data = res.data;
-                    time.value = data.data[0]["startTime"] + " ~ "+ data.data[0]["endTime"]
-                    Object.assign(eduArr, reactive( data.data ));
+                    Object.assign(eduArr, reactive(data.data));
                     title.value = data.title;
                 },
                 (err) => {
@@ -45,18 +49,17 @@ export default {
             );
         };
 
+        /* 挂载后 */
         onMounted(() => {
             getEducationInfo();
         });
 
         return {
             title,
-            time,
-            eduArr
+            eduArr,
         };
     },
 };
 </script>
 
-<style>
-</style>
+<style></style>

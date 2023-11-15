@@ -1,8 +1,9 @@
 <template>
+    <!-- 该组件用于展示就职公司历程 -->
     {{ companyName }}
     <ul>
         <li v-for="detail in companyData" :key="detail.id" :id="detail.id">
-            {{detail.title}}：{{detail.content}}
+            {{ detail.title }}：{{ detail.content }}
         </li>
     </ul>
 
@@ -29,9 +30,14 @@ export default {
             required: true,
         },
     },
-    setup(props){
+    setup(props) {
+        /* 初始化 */
+        // 存放公司信息
         let companyData = ref();
-        let getCompanyData = ()=>{
+
+        /* 自定义函数 */
+        // 获取公司信息
+        let getCompanyData = () => {
             axios({
                 method: "get",
                 url: "/blogserve/resume/response/" + props.companyId,
@@ -43,16 +49,17 @@ export default {
                     console.error(err);
                 }
             );
-        }
-        
+        };
+
+        /* 挂载后 */
         onMounted(() => {
-            getCompanyData()
-        })
+            getCompanyData();
+        });
 
         return {
-            companyData
-        }
-    }
+            companyData,
+        };
+    },
 };
 </script>
 

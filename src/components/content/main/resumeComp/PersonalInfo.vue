@@ -1,4 +1,5 @@
 <template>
+    <!-- 该组件为个人信息资料 -->
     <resume-title :resumeTitle="title"></resume-title>
     <div>
         <ul>
@@ -7,8 +8,11 @@
             <li>{{ phone }}</li>
             <li>{{ email }}</li>
         </ul>
+        <!-- 博客地址 -->
         <ul>
-            <li v-for="b in blog" :key="b.id">{{ b.name }}: <a href="{{b.url}}">{{ b.url }}</a></li>
+            <li v-for="b in blog" :key="b.id">
+                {{ b.name }}: <a href="{{b.url}}">{{ b.url }}</a>
+            </li>
         </ul>
     </div>
 </template>
@@ -25,13 +29,22 @@ export default {
         ResumeTitle,
     },
     setup() {
+        /* 数据初始化 */
+        // 标题
         let title = ref(),
+        // 姓名
             name = ref(),
+            // 年龄
             age = ref(),
+            // 手机
             phone = ref(),
+            // 电子邮箱
             email = ref(),
+            // 博客
             blog = ref();
 
+        /* 自定义函数 */
+        // 获取个人信息
         let getPersonalInfo = async () => {
             await axios({
                 method: "get",
@@ -45,6 +58,7 @@ export default {
                     age.value = data.age;
                     phone.value = data.mobile;
                     email.value = data.email;
+                    // 其实是对象数组，但是ref自己在内部会转为reactive
                     blog.value = data.blog;
                 },
                 (err) => {
@@ -52,10 +66,13 @@ export default {
                 }
             );
         };
+
+        /* 挂载后执行 */
         onMounted(() => {
             getPersonalInfo();
         });
 
+        /* 组件所需的数据及对应的数据绑定 */
         return {
             title,
             name,
