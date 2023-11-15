@@ -43,11 +43,12 @@ export default {
 
         // methods
         // 获取侧边导航栏的请求
-        let getNavList = function () {
+        let getNavList = () => {
+            console.log(route);
             if (route.path)
                 axios({
                     method: "get",
-                    url: "/blogserve/nav" + route.path,
+                    url: "/blogserve/nav/sideNav" + route.path,
                 }).then(
                     (res) => {
                         try {
@@ -56,14 +57,15 @@ export default {
                             menu.length = 0;
                             // 将新数据的对象复制到menu中
                             Object.assign(menu, newMenu);
+                            // 初始化默认选中
                             if (res.data.length != 0) {
                                 defaultActive.value = res.data[0].menu
                                     ? "1-1"
                                     : "1";
                             }
                         } catch (error) {
-							console.log(`promise: ${error}` ) 
-						}
+                            console.log(`promise: ${error}`);
+                        }
                     },
                     (err) => {
                         console.warn(err);
@@ -73,7 +75,7 @@ export default {
 
         onMounted(() => {
             // 获取侧边导航栏
-            getNavList();
+            // getNavList();
         });
         // 监听路由变化
         watch(
