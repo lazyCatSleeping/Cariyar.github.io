@@ -6,18 +6,18 @@
         </li>
     </ul>
 
-    <project-detail :companyId="companyId"></project-detail>
+    <project-info :companyId="companyId"></project-info>
 </template>
 
 <script>
 import { onMounted, ref } from "vue";
-import ProjectDetail from "./ProjectDetail.vue";
+import ProjectInfo from "./ProjectInfo.vue";
 import axios from "axios";
 
 export default {
     name: "CompanyDetail",
     components: {
-        ProjectDetail,
+        ProjectInfo,
     },
     props: {
         companyName: {

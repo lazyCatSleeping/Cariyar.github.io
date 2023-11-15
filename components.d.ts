@@ -20,6 +20,7 @@ declare module 'vue' {
     PersonalInfo: typeof import('./src/components/content/main/resumeComp/PersonalInfo.vue')['default']
     ProjectDetail: typeof import('./src/components/content/main/resumeComp/ProjectDetail.vue')['default']
     ProjectExp: typeof import('./src/components/content/main/resumeComp/ProjectExp.vue')['default']
+    ProjectInfo: typeof import('./src/components/content/main/resumeComp/ProjectInfo.vue')['default']
     ResumeTitle: typeof import('./src/components/content/main/resumeComp/ResumeTitle.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -18,7 +18,7 @@ import axios from "axios";
 export default {
     name: "ProjectDetail",
     props: {
-        companyId: {
+        projectId: {
             type: Number,
             required: true,
         },
@@ -28,7 +28,7 @@ export default {
         let getProjectDetail = () => {
             axios({
                 method: "get",
-                url: "/blogserve/resume/projectDetail/" + props.companyId,
+                url: "/blogserve/resume/projectDetail/" + props.projectId,
             }).then(
                 (res) => {
                     console.log(res);
